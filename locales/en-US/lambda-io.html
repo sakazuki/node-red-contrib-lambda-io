@@ -1,0 +1,46 @@
+<script type="text/x-red" data-help-name="lambda in">
+    <p>Provides a message when lambda is invoked</p>
+    <h3>Output</h3>
+    <dl class="message-properties">
+        <dt>payload <span class="property-type">object</span></dt>
+        <dd>set a <code>event</code> data provided to lambda function</dd>
+        <dt>context <span class="property-type">object</span></dt>
+        <dd>set a <code>context</code> object that lambda function has</dd>
+    </dl>
+    <h3>Detail</h3>
+    <p><b>Note</b> This node does not return. lambda out node should return </p>
+    <p><b>Note</b> To use this node, corresponding code is required in the lambda main code.</p>
+
+</script>
+
+<script type="text/x-red" data-help-name="lambda out">
+    <p>Sends a message back to lambda call started from an lambda in node.</p>
+
+    <h3>Input</h3>
+    <dl class="message-properties">
+        <dt>payload <span class="property-type">string</span></dt>
+        <dd>Response Body</dd>
+    </dl>
+    <h3>Output</h3>
+    <p>In case that the Lambda Proxy Integration Format is enabled, the following format is used.</p>
+    <dl class="message-properties">
+        <dt>body <span class="property-type">string|buffer|object</span></dt>
+        <dd>set <code>msg.payload</code></dd>
+        <dt class="optional">statusCode <span class="property-type">number</span></dt>
+        <dd>set <code>msg.statusCode</code>. Default: <code>200</code></dd>
+        <dt class="optional">headers <span class="property-type">object</span></dt>
+        <dd>set <code>msg.headers</code>. Default: <code>{}</code></dd>
+        <dt class="optional">isBase64Encoded <span class="property-type">boolean</span></dt>
+        <dd>set <code>msg.isBase64Encoded</code>. Default: <code>false</code><br>
+            set true, when <code>msg.payload</code> is Buffer.</dd>
+    </dl>
+    <p>
+    <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/set-up-lambda-proxy-integrations.html#api-gateway-simple-proxy-for-lambda-output-format">ヘルプ</a>
+    </p>
+    <h3>Detail</h3>
+    <p><b>Note</b> To use this node, corresponding code is required in the lambda main code.</p>
+</script>
+
+<script type="text/x-red" data-help-name="lambda test">
+    <p>lambda test node to debug</p>
+</script>

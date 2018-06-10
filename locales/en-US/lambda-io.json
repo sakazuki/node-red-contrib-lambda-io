@@ -1,0 +1,8 @@
+{
+    "lambda": {
+        "label": {
+            "to": "Output",
+            "lambda_proxy_helper": "Lambda Proxy Integration Format"
+        }
+    }
+}

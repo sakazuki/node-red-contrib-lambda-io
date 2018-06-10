@@ -1,0 +1,8 @@
+{
+    "lambda": {
+        "label": {
+            "to": "出力",
+            "lambda_proxy_helper": "Lambdaプロキシ統合フォーマット"
+        }
+    }
+}

@@ -1,0 +1,31 @@
+{
+  "name": "node-red-contrib-lambda-io",
+  "version": "0.2.2",
+  "description": "Lambda Input/Output node for Node-RED",
+  "main": "lambda-io.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sakazuki/node-red-contrib-lambda-io.git"
+  },
+  "keywords": [
+    "node-red",
+    "lambda",
+    "aws",
+    "frontops",
+    "sakazuki"
+  ],
+  "node-red": {
+    "nodes": {
+      "lambda-io": "lambda-io.js"
+    }
+  },
+  "author": "sakazuki",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/sakazuki/node-red-contrib-lambda-io/issues"
+  },
+  "homepage": "https://github.com/sakazuki/node-red-contrib-lambda-io"
+}
