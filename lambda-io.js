@@ -49,6 +49,7 @@ module.exports = function(RED){
         this.lambda_proxy_helper = config.lambda_proxy_helper;
         var node = this;
         node.on('input', function(msg){
+            var eventName = 'aws:lambda:callback:' + msg.context.awsRequestId 
             if (msg.context || msg.error){
                 var res;
                 if (node.lambda_proxy_helper) {
@@ -56,9 +57,9 @@ module.exports = function(RED){
                 }else{
                     res = msg.payload;
                 }
-                RED.events.emit('aws:lambda:done:' + msg.context.awsRequestId, res)
+                RED.events.emit(eventName, null, res)
             }else{
-                RED.events.emit('aws:lambda:error', msg)
+                RED.events.emit(eventName, msg)
             }
         })
     }
@@ -70,11 +71,13 @@ module.exports = function(RED){
         var node = this;
         var events = {};
         node.on('input', function(msg){
-            events['aws:lambda:done:' + msg._msgid] = function(data) { node.send(data) };
-            events['aws:lambda:error'] = function(data){ node.warn('error', data) };
-            for (var key in events){
-                RED.events.once(key, events[key])
-            }
+            RED.events.once('aws:lambda:callback:' + msg._msgid, function(err, data) {
+                if (err) {
+                    node.warn('error', err)
+                } else {
+                    node.send(data)
+                }
+            });
             RED.events.emit('aws:lambda:invoke', msg.payload, {awsRequestId: msg._msgid})
         })
         node.on('close', function(){

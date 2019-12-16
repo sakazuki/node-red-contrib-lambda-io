@@ -3,12 +3,20 @@
 
 Node-RED nodes to make AWS Lambda Functions on lambda
 
+# Breaking Changes
+After v1.0.0,  event names used internal were changed
 
+|Type|Before|After|
+|----|----|----|
+|success|aws:lambda:done:[id]|aws:lmbda:callback:[id]|
+|error|aws:lambda:error|aws:lmbda:callback:[id]|
+
+You have to use [aws-serverless-node-red](https://github.com/sakazuki/aws-serverless-node-red) v1.0.0 after
 
 # Install
 
 ```
-sudo npm install node-red-contrib-lambda-io
+npm install node-red-contrib-lambda-io
 ```
 # Usage
 
